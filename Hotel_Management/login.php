@@ -1,74 +1,56 @@
 <?php
 session_start();
-include "db.php";
+require "db.php";
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $email = $_POST["email"];
-    $password = $_POST["password"];
+$email = trim($_POST["email"] ?? "");
+$password = $_POST["password"] ?? "";
 
-    // Check Admin
-    $q = mysqli_query($conn, "SELECT * FROM admins WHERE email='$email'");
-    if($u = mysqli_fetch_assoc($q)){
-        if(password_verify($password, $u["password"])){
-            $_SESSION["role"] = "admin";
-            $_SESSION["user_id"] = $u["id"];
-            header("Location: admin-dashboard.php");
-            exit;
-        }
-    }
-
-    // Check Receptionist
-    $q = mysqli_query($conn, "SELECT * FROM receptionists WHERE email='$email'");
-    if($u = mysqli_fetch_assoc($q)){
-        if(password_verify($password, $u["password"])){
-            $_SESSION["role"] = "receptionist";
-            $_SESSION["user_id"] = $u["id"];
-            header("Location: receptionist-dashboard.php");
-            exit;
-        }
-    }
-
-    // Check Guest
-    $q = mysqli_query($conn, "SELECT * FROM guests WHERE email='$email'");
-    if($u = mysqli_fetch_assoc($q)){
-        if(password_verify($password, $u["password"])){
-            $_SESSION["role"] = "guest";
-            $_SESSION["user_id"] = $u["id"];
-            header("Location: guest-dashboard.php");
-            exit;
-        }
-    }
-
-    $error = "Invalid email or password";
+if ($email === "" || $password === "") {
+  header("Location: loginpage.html?error=1");
+  exit;
 }
-?>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
 
-    <!-- 🔗 HERE is your external CSS -->
-    <link rel="stylesheet" href="style.css">
-</head>
+function tryLogin($conn, $table, $role, $email, $password) {
+  $sql = "SELECT id, password FROM $table WHERE email = ? LIMIT 1";
+  $stmt = $conn->prepare($sql);
+  if (!$stmt) return false;
 
-<body>
-<div class="container">
+  $stmt->bind_param("s", $email);
+  $stmt->execute();
+  $res = $stmt->get_result();
 
-<h2>Login</h2>
+  if ($row = $res->fetch_assoc()) {
+    $dbPass = $row["password"];
 
-<?php if(isset($error)) echo "<p style='color:red'>$error</p>"; ?>
+    // ✅ Works if password is hashed
+    if (password_verify($password, $dbPass)) {
+      $_SESSION["user_id"] = $row["id"];
+      $_SESSION["role"] = $role;
+      return true;
+    }
 
-<form method="POST">
-    <label>Email</label>
-    <input type="email" name="email" placeholder="Email" required>
+    // ✅ ALSO works if password is saved as plain text (like 12345)
+    if ($password === $dbPass) {
+      $_SESSION["user_id"] = $row["id"];
+      $_SESSION["role"] = $role;
+      return true;
+    }
+  }
+  return false;
+}
 
-    <label>Password</label>
-    <input type="password" name="password" placeholder="Password" required>
+if (tryLogin($conn, "admins", "admin", $email, $password)) {
+  header("Location: admin_dashboard.php");
+  exit;
+}
+if (tryLogin($conn, "receptionists", "receptionist", $email, $password)) {
+  header("Location: receptionist-dashboard.php");
+  exit;
+}
+if (tryLogin($conn, "guests", "guest", $email, $password)) {
+  header("Location: guest-dashboard.php");
+  exit;
+}
 
-    <button class="btn-primary" type="submit">Login</button>
-</form>
-
-</div>
-</body>
-</html>
+header("Location: loginpage.html?error=1");
+exit;

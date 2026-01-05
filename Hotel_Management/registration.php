@@ -1,63 +1,53 @@
 <?php
-include "db.php";
+// registration.php
+session_start();
+require "db.php"; // must create $conn = new mysqli(...)
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+$name = trim($_POST["name"] ?? "");
+$email = trim($_POST["email"] ?? "");
+$password = $_POST["password"] ?? "";
 
-    $name  = $_POST["name"];
-    $email = $_POST["email"];
-    $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
-    $role = $_POST["role"];
-
-    // Decide which table to use
-    if($role == "admin"){
-        $stmt = $conn->prepare("INSERT INTO admins(name,email,password) VALUES(?,?,?)");
-    }
-    elseif($role == "receptionist"){
-        $stmt = $conn->prepare("INSERT INTO receptionists(name,email,password) VALUES(?,?,?)");
-    }
-    else{
-        $stmt = $conn->prepare("INSERT INTO guests(name,email,password) VALUES(?,?,?)");
-    }
-
-    $stmt->bind_param("sss", $name, $email, $password);
-    $stmt->execute();
-
-    $success = "User registered successfully!";
+// basic validation
+if ($name === "" || $email === "" || $password === "") {
+  header("Location: register.html?error=1");
+  exit;
 }
-?>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Register</title>
 
-    <!-- external css -->
-    <link rel="stylesheet" href="style.css">
-</head>
+// check db connection
+if (!isset($conn) || $conn->connect_error) {
+  die("DB connection failed.");
+}
 
-<body>
-<div class="container">
+// email already exists?
+$check = $conn->prepare("SELECT id FROM guests WHERE email = ?");
+if (!$check) {
+  die("Prepare failed: " . $conn->error);
+}
+$check->bind_param("s", $email);
+$check->execute();
+$checkRes = $check->get_result();
 
-<h2>Register User</h2>
+if ($checkRes && $checkRes->num_rows > 0) {
+  // email already registered
+  header("Location: register.html?exists=1");
+  exit;
+}
 
-<?php if(isset($success)) echo "<p style='color:green'>$success</p>"; ?>
+// hash password (this is why DB shows different text)
+$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-<form method="POST">
+// insert guest
+$insert = $conn->prepare("INSERT INTO guests (name, email, password) VALUES (?, ?, ?)");
+if (!$insert) {
+  die("Prepare failed: " . $conn->error);
+}
+$insert->bind_param("sss", $name, $email, $hashedPassword);
 
-    <label>Name</label>
-    <input type="text" name="name" placeholder="Name" required>
-
-    <label>Email</label>
-    <input type="email" name="email" placeholder="Email" required>
-
-    <label>Password</label>
-    <input type="password" name="password" placeholder="Password" required>
-
-    
-
-    <button class="btn-primary" type="submit">Register</button>
-</form>
-
-</div>
-</body>
-</html>
+if ($insert->execute()) {
+  // success -> go to login page
+  header("Location: loginpage.html?registered=success");
+  exit;
+} else {
+  header("Location: register.html?error=1");
+  exit;
+}

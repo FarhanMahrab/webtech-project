@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Forgot Password</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="container">
+
+<h2>Forgot Password</h2>
+
+<p>Enter your email and we’ll send reset instructions.</p>
+
+<form method="POST" action="forgot-process.php">
+  <label>Email</label>
+  <input type="email" name="email" placeholder="Your Email" required>
+
+  <button class="btn-primary" type="submit">Send Reset Link</button>
+</form>
+
+<p>
+Remembered it?  
+<a href="login-frontend.php">Back to login</a>
+</p>
+
+</div>
+</body>
+</html>

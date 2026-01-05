@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="container">
+
+<h2>Create Account</h2>
+
+<form method="POST" action="registration.php">
+
+  <label>Name</label>
+  <input type="text" name="name" placeholder="Your Name" required>
+
+  <label>Email</label>
+  <input type="email" name="email" placeholder="Email" required>
+
+  <label>Password</label>
+  <input type="password" name="password" placeholder="Password" required>
+
+  <label>Account Type</label>
+  <select name="role">
+    <option value="guest">Guest</option>
+    <option value="receptionist">Receptionist</option>
+    <option value="admin">Admin</option>
+  </select>
+
+  <button class="btn-primary" type="submit">Register</button>
+</form>
+
+<p>
+Already have an account?  
+<a href="login-frontend.php">Login</a>
+</p>
+
+</div>
+</body>
+</html>

@@ -1,25 +1,65 @@
 <?php
 session_start();
-if($_SESSION["role"] != "guest") die("Access denied");
+require "db.php"; // ✅ MUST: $conn comes from here
+
+// 1) user logged in কিনা
+if (!isset($_SESSION["user_id"]) || !isset($_SESSION["role"]) || $_SESSION["role"] !== "guest") {
+  header("Location: loginpage.html?error=1");
+  exit;
+}
+
+// 2) db connection check
+if (!isset($conn) || $conn->connect_error) {
+  die("DB connection failed.");
+}
+
+$user_id = $_SESSION["user_id"];
+
+// 3) guest info fetch
+$stmt = $conn->prepare("SELECT id, name, email FROM guests WHERE id = ?");
+if (!$stmt) {
+  die("Prepare failed: " . $conn->error);
+}
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$res = $stmt->get_result();
+$guest = $res->fetch_assoc();
+
+if (!$guest) {
+  // user id session e ache but db te nai
+  session_destroy();
+  header("Location: loginpage.html?error=1");
+  exit;
+}
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Guest Dashboard</title>
-
-    <!-- External CSS -->
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guest Dashboard</title>
+  <style>
+    body{font-family:Arial; background:#f4f6ff; padding:30px;}
+    .box{background:#fff; max-width:700px; padding:20px; border-radius:12px; box-shadow:0 8px 25px rgba(0,0,0,.08);}
+    .btn{display:inline-block; padding:10px 14px; background:#111827; color:#fff; text-decoration:none; border-radius:8px;}
+    .muted{color:#555}
+  </style>
 </head>
-
 <body>
-<div class="container">
+  <div class="box">
+    <h2>Welcome, <?php echo htmlspecialchars($guest["name"]); ?> ✅</h2>
+    <p class="muted"><b>Email:</b> <?php echo htmlspecialchars($guest["email"]); ?></p>
 
-<h2>Guest Dashboard</h2>
+    <hr>
 
-<a class="btn-primary" href="search-rooms.php">Search Rooms</a><br><br>
-<a class="btn-secondary" href="my-bookings.php">My Bookings</a>
+    <h3>Your Options</h3>
+    <ul>
+      <li>View available rooms</li>
+      <li>Book a room</li>
+      <li>See your bookings</li>
+    </ul>
 
-</div>
+    <a class="btn" href="logout.php">Logout</a>
+  </div>
 </body>
 </html>

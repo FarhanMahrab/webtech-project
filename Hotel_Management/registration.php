@@ -1,7 +1,7 @@
 <?php
 // registration.php
 session_start();
-require "db.php"; // must create $conn = new mysqli(...)
+require "db.php";
 
 $name = trim($_POST["name"] ?? "");
 $email = trim($_POST["email"] ?? "");

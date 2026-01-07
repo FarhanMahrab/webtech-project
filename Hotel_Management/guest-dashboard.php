@@ -1,21 +1,21 @@
 <?php
 session_start();
-require "db.php"; // ✅ MUST: $conn comes from here
+require "db.php"; 
 
-// 1) user logged in কিনা
+
 if (!isset($_SESSION["user_id"]) || !isset($_SESSION["role"]) || $_SESSION["role"] !== "guest") {
   header("Location: loginpage.html?error=1");
   exit;
 }
 
-// 2) db connection check
+
 if (!isset($conn) || $conn->connect_error) {
   die("DB connection failed.");
 }
 
 $user_id = $_SESSION["user_id"];
 
-// 3) guest info fetch
+
 $stmt = $conn->prepare("SELECT id, name, email FROM guests WHERE id = ?");
 if (!$stmt) {
   die("Prepare failed: " . $conn->error);
@@ -26,7 +26,7 @@ $res = $stmt->get_result();
 $guest = $res->fetch_assoc();
 
 if (!$guest) {
-  // user id session e ache but db te nai
+  
   session_destroy();
   header("Location: loginpage.html?error=1");
   exit;

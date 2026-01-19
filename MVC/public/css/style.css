@@ -1,0 +1,1100 @@
+/* ========== GLOBAL ========== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+  background:#f3f5ff;
+  color:#222;
+  line-height:1.6;
+}
+/* ========== hero banner ========== */
+.hero-banner img {
+    width: 100%;
+    height: 95vh;
+    object-fit: cover;
+    display: block;
+}
+
+
+/* ========== CONTAINER CARD ========== */
+.container{
+  width:90%;
+  max-width:1000px;
+  margin:25px auto;
+  background:#fff;
+  padding:22px;
+  border-radius:14px;
+  box-shadow:0 12px 30px rgba(0,0,0,.08);
+}
+/* ========== Hero Banner ========== */
+.welcome-section{
+    max-width: 900px;
+    margin: 60px auto;
+    text-align: center;
+    line-height: 1.7;
+}
+
+.welcome-title{
+    color: #444;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+.welcome-title span{
+    color: #d4af37;   /* gold accent */
+    font-weight: 700;
+}
+
+.main-heading{
+    font-size: 34px;
+    margin-top: 10px;
+    color: #2f3e53;
+}
+
+.sub-heading{
+    color: #666;
+    margin-top: 20px;
+}
+
+.welcome-text{
+    margin-top: 15px;
+    color: #555;
+}
+
+.mini-title{
+    margin-top: 25px;
+    font-weight: bold;
+}
+
+.why-text{
+    color: #444;
+}
+
+.see-more{
+    color: #e6b800;
+    text-decoration: none;
+    font-weight: 600;
+}
+.see-more:hover{
+    text-decoration: underline;
+}
+
+
+/* ========== HEADER / NAV ========== */
+header{
+  background:#1a1a2e;
+  color:#fff;
+  padding:15px 35px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+header .logo{
+  font-size:22px;
+  font-weight:bold;
+}
+
+nav a{
+  color:#fff;
+  margin-left:14px;
+  text-decoration:none;
+}
+
+nav a:hover{
+  text-decoration:underline;
+}
+
+/* ========== BUTTONS ========== */
+button,
+.btn{
+  padding:8px 16px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.btn-primary{ background:#1a1a2e; color:#fff; }
+.btn-success{ background:#27ae60; color:#fff; }
+.btn-danger{ background:#e74c3c; color:#fff; }
+.btn-secondary{ background:#6c757d; color:#fff; }
+
+button:hover,
+.btn:hover{ opacity:.9; }
+
+/* ========== FORMS ========== */
+form{
+  margin-top:12px;
+}
+
+input,
+select{
+  width:100%;
+  padding:9px;
+  margin-top:6px;
+  border:1px solid #ccc;
+  border-radius:6px;
+}
+
+label{
+  margin-top:10px;
+  display:block;
+  font-weight:bold;
+}
+
+/* ========== HERO / BANNER ========== */
+.hero{
+  background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
+             url("/Hotel_Management/public/images/hotel.jpg") center/cover no-repeat;
+  color:#fff;
+  text-align:center;
+  padding:85px 20px;
+}
+
+.hero h1{ font-size:36px; margin-bottom:10px; }
+
+/* ========== SECTIONS (services / about / policies / etc.) ========== */
+section{
+  margin-top:20px;
+}
+
+section article{
+  background:#fff;
+  padding:20px;
+  border-radius:10px;
+  box-shadow:0 6px 18px rgba(0,0,0,.06);
+  margin-bottom:18px;
+}
+
+section h2{
+  margin-bottom:6px;
+}
+
+section h3{
+  margin-top:16px;
+  color:#1a1a2e;
+}
+
+/* ========== GRID LISTS (services etc.) ========== */
+.service-box{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:12px;
+  margin-top:12px;
+}
+
+.service{
+  background:#fff;
+  padding:12px;
+  border-radius:8px;
+  box-shadow:0 6px 18px rgba(0,0,0,.06);
+  text-align:center;
+}
+
+/* ========== TABLE STYLE (bookings, lists) ========== */
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:12px;
+}
+
+table th,
+table td{
+  padding:10px;
+  border:1px solid #ddd;
+}
+
+table th{
+  background:#f0f0f7;
+}
+
+/* ========== FOOTER ========== */
+footer{
+  background:#1a1a2e;
+  color:#fff;
+  text-align:center;
+  padding:14px;
+  margin-top:35px;
+}
+
+.service img {
+  box-shadow: 0 8px 18px rgba(0,0,0,.12);
+  margin-bottom: 6px;
+}
+
+.about-section{
+  max-width:1100px;
+  margin:40px auto;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:25px;
+}
+
+.about-container{
+  display:grid;
+  grid-template-columns: 1.2fr 1.8fr;
+  gap:30px;
+}
+
+.about-image img{
+  width:100%;
+  border-radius:12px;
+}
+
+.about-text h3{
+  margin-top:0;
+}
+
+.about-list{
+  margin-top:8px;
+}
+
+.about-list li{
+  margin:5px 0;
+  line-height:1.5;
+}
+
+
+.events-section{
+  max-width:1100px;
+  margin:60px auto;
+}
+
+.events-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:25px;
+}
+
+.event-card{
+  background:white;
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow:0 8px 18px rgba(0,0,0,.08);
+  text-align:center;
+}
+
+.event-card img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+}
+
+.event-card h3{
+  padding:15px 0;
+  color:#133b2f;
+}
+
+/* ========== faq ========== */
+.faq-section {
+    width: 80%;
+    margin: 40px auto;
+}
+
+.faq-title {
+    text-align: center;
+    font-size: 24px;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
+
+.faq-item {
+    border-bottom: 1px solid #eee;
+}
+
+.faq-question {
+    width: 100%;
+    padding: 15px 5px;
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-question:hover {
+    color: #56726E;
+}
+
+.icon {
+    font-size: 18px;
+    color: #e6b800;
+}
+
+.faq-answer {
+    display: none;
+    padding: 10px 5px 20px 5px;
+    color: #555;
+}
+
+.faq-more {
+    float: right;
+    margin-top: 10px;
+    border: 1px solid #e6b800;
+    padding: 6px 14px;
+    background: white;
+    cursor: pointer;
+}
+
+/* ========== location ========== */
+.location-section {
+    text-align: center;
+    width: 85%;
+    margin: auto;
+}
+
+.location-top {
+    letter-spacing: 2px;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.location-title {
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+.location-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.location-info {
+    text-align: left;
+    width: 40%;
+    line-height: 30px;
+}
+
+.location-info h2 {
+    color: #335c4e;
+}
+
+.location-info a {
+    color: #2f6990;
+    text-decoration: none;
+}
+
+.location-map {
+    width: 60%;
+}
+
+/* ========== outlet ========== */
+.outlets-section {
+    width: 90%;
+    margin: auto;
+    margin-top: 40px;
+}
+
+.outlets-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.outlets-header h2 {
+    font-size: 36px;
+}
+
+.outlets-nav span {
+    margin-left: 15px;
+    cursor: pointer;
+    color: #3b5f3b;
+}
+
+.outlets-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.outlet-card {
+    width: 32%;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,.08);
+    overflow: hidden;
+    text-align: center;
+}
+
+.outlet-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.outlet-card h3 {
+    padding: 15px 10px;
+    font-weight: 500;
+    color: #214d36;
+}
+
+/* ========== rooms ========== */
+.rooms-section {
+    padding: 60px 80px;
+}
+
+.section-title {
+    font-size: 36px;
+    margin-bottom: 25px;
+    color: #1c2b1f;
+}
+
+.rooms-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.room-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.08);
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+.room-card img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+}
+
+.room-card h3 {
+    font-size: 20px;
+    margin-top: 15px;
+    color: #1b3d30;
+}
+
+
+/* ===================== ROOMS PAGE ===================== */
+
+/* Breadcrumb */
+.rooms-breadcrumb{
+    width: 85%;
+    margin: 15px auto 5px;
+    font-size: 13px;
+    color:#555;
+}
+.rooms-breadcrumb a{
+    color:#2f6690;
+    text-decoration:none;
+}
+.rooms-breadcrumb a:hover{
+    text-decoration:underline;
+}
+
+/* Tabs (Deluxe / Suite / Connecting Rooms) */
+.rooms-tabs{
+    width:85%;
+    margin:10px auto 25px;
+}
+.rooms-tabs button{
+    padding:7px 14px;
+    border:1px solid #ccc;
+    background:#fff;
+    cursor:pointer;
+    border-radius:4px;
+    margin-right:6px;
+}
+.rooms-tabs button.active{
+    background:#1d4d37;
+    color:#fff;
+    border-color:#1d4d37;
+}
+
+/* Wrapper */
+.rooms-wrapper{
+    width:85%;
+    margin:20px auto 50px;
+}
+
+/* Each room block */
+.room-item{
+    display:flex;
+    gap:25px;
+    background:#f7f9fc;
+    border-radius:10px;
+    padding:18px;
+    box-shadow:0 10px 25px rgba(0,0,0,.06);
+    margin-bottom:25px;
+}
+
+/* Room image */
+.room-item img{
+    width:42%;
+    height:270px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+/* Right content */
+.room-details{
+    width:58%;
+}
+.room-details h3{
+    margin:5px 0 12px;
+    color:#1f3c2d;
+}
+
+/* Feature strip */
+.room-feature-box{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    background:#fbf8d9;
+    border:1px solid #ece5ad;
+    border-radius:6px;
+    padding:8px;
+    margin-bottom:10px;
+}
+.room-feature-box div{
+    text-align:center;
+    font-size:13px;
+}
+.room-feature-box strong{
+    display:block;
+    color:#1f3c2d;
+}
+
+/* More facility btn */
+.more-btn{
+    margin-top:6px;
+    background:white;
+    border:1px solid #ccc;
+    padding:5px 10px;
+    border-radius:5px;
+    font-size:13px;
+    cursor:pointer;
+}
+.more-btn:hover{ background:#efefef; }
+
+/* Price row */
+.price-row{
+    margin-top:12px;
+    display:flex;
+    align-items:center;
+}
+.price-label{
+    background:#dfe7f1;
+    padding:8px 12px;
+    font-weight:bold;
+}
+.price-value{
+    padding:8px 14px;
+    background:white;
+    border:1px solid #e7e7e7;
+    font-weight:bold;
+}
+
+/* Buttons */
+.room-buttons{ margin-top:12px; }
+.reserve-btn{
+    background:#1d4d37;
+    color:white;
+    border:none;
+    padding:8px 18px;
+    border-radius:6px;
+    cursor:pointer;
+}
+.reserve-btn:hover{ opacity:.9; }
+
+.details-btn{
+    background:transparent;
+    border:1px solid #1d4d37;
+    color:#1d4d37;
+    padding:8px 18px;
+    border-radius:6px;
+    margin-left:10px;
+    cursor:pointer;
+}
+.details-btn:hover{
+    background:#e6f2ec;
+}
+
+/* ================= BOOKING PAGE ================= */
+
+.booking-banner{
+    height: 260px;
+    background: linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
+                url("images/resort.jpg") center/cover no-repeat;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+}
+
+.banner-text h1{
+    font-size:42px;
+}
+
+.banner-text p{
+    margin-top:8px;
+}
+
+.banner-text span{
+    background:#9acd32;
+    padding:4px 10px;
+    border-radius:4px;
+    color:#000;
+}
+
+/* ===== Booking form ===== */
+
+.booking-section{
+    width: 70%;
+    margin: 60px auto;
+    background:#d7dde5;
+    padding:40px;
+    border-radius:10px;
+}
+
+.booking-section h2{
+    text-align:center;
+    font-size:32px;
+    margin-bottom:8px;
+}
+
+.booking-sub{
+    text-align:center;
+    color:#555;
+    margin-bottom:30px;
+}
+
+.booking-form{
+    width:100%;
+}
+
+.form-row{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:20px;
+    margin-bottom:18px;
+}
+
+.booking-form label{
+    font-weight:600;
+    display:block;
+    margin-bottom:6px;
+}
+
+.booking-form input,
+.booking-form select{
+    width:100%;
+    padding:10px;
+    border-radius:6px;
+    border:1px solid #ccc;
+}
+
+.book-btn{
+    margin-top:20px;
+    background:#2f5f4f;
+    color:white;
+    border:none;
+    padding:10px 26px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.book-btn:hover{
+    opacity:.9;
+}
+
+/* ===== Login/Register Button Group ===== */
+
+.auth-buttons{
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.auth-btn{
+    padding: 10px 22px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Login button */
+.login-btn{
+    background: #0f1225;
+    color: #fff;
+    border: none;
+}
+
+.login-btn:hover{
+    background: #1a1d3a;
+}
+
+/* Register button */
+.register-btn{
+    background: #7b7f86;
+    color: #fff;
+}
+
+.register-btn:hover{
+    background: #6b6f76;
+}
+
+/* ================= ADMIN DASHBOARD ================= */
+
+.admin-dashboard{
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+/* ---------- Dashboard Cards ---------- */
+.admin-card{
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+    margin-bottom: 30px;
+}
+
+/* ---------- Headings ---------- */
+.admin-card h2{
+    margin-bottom: 18px;
+    color: #1a1a2e;
+    border-bottom: 2px solid #f0f0f7;
+    padding-bottom: 8px;
+}
+
+/* ---------- Profile Section ---------- */
+.profile-box{
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.profile-img{
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #1a1a2e;
+}
+
+.profile-info p{
+    margin: 6px 0;
+    font-size: 15px;
+}
+
+/* ---------- Edit Profile Form ---------- */
+.edit-form{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 15px;
+}
+
+.edit-form input{
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.edit-form button{
+    grid-column: span 2;
+    width: 220px;
+    margin-top: 10px;
+}
+
+/* ---------- Top Buttons ---------- */
+.top-actions{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.top-actions a{
+    background: #1a1a2e;
+    color: #fff;
+    padding: 7px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.top-actions a:hover{
+    opacity: .9;
+}
+
+/* ---------- Tables ---------- */
+.admin-table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.admin-table th,
+.admin-table td{
+    padding: 10px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    text-align: center;
+}
+
+.admin-table th{
+    background: #f0f0f7;
+    color: #1a1a2e;
+}
+
+/* ---------- Action Buttons ---------- */
+.action-btn{
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    border: none;
+    cursor: pointer;
+}
+
+.update-btn{
+    background: #27ae60;
+    color: #fff;
+}
+
+.delete-btn{
+    background: #e74c3c;
+    color: #fff;
+}
+
+.update-btn:hover,
+.delete-btn:hover{
+    opacity: .9;
+}
+
+/* ---------- Responsive ---------- */
+@media(max-width: 900px){
+    .profile-box{
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .edit-form{
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ================= GUEST DASHBOARD ================= */
+
+/* Header title emphasis */
+header .logo{
+    font-size:22px;
+    font-weight:bold;
+}
+
+/* Guest profile text spacing */
+.container p{
+    font-size:15px;
+    margin:6px 0;
+}
+
+/* Guest section headings */
+.container h2{
+    color:#1a1a2e;
+    margin-bottom:12px;
+    border-bottom:2px solid #e6e6f0;
+    padding-bottom:6px;
+}
+
+/* Booking table status colors (optional visual clarity) */
+table td:last-child{
+    font-weight:600;
+}
+
+table td:last-child:contains("Confirmed"){
+    color:#27ae60;
+}
+
+table td:last-child:contains("Pending"){
+    color:#e67e22;
+}
+
+/* Improve form look in dashboard */
+.container form input{
+    background:#fafafa;
+}
+
+/* Button spacing */
+.container form button{
+    margin-top:15px;
+}
+
+/* Responsive adjustment */
+@media (max-width:768px){
+    .container{
+        width:95%;
+    }
+
+    table{
+        font-size:13px;
+    }
+
+    header{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    header nav{
+        margin-top:10px;
+    }
+}
+
+/* ================= RECEPTIONIST DASHBOARD ================= */
+
+/* Header emphasis */
+header .logo{
+    font-size:22px;
+    font-weight:bold;
+}
+
+/* Section headings */
+.container h2{
+    color:#1a1a2e;
+    margin-bottom:12px;
+    border-bottom:2px solid #e6e6f0;
+    padding-bottom:6px;
+}
+
+/* Profile text spacing */
+.container p{
+    margin:6px 0;
+    font-size:15px;
+}
+
+/* Booking table tweaks */
+table{
+    background:#fff;
+}
+
+table th{
+    background:#eef0fb;
+    color:#1a1a2e;
+    font-weight:600;
+}
+
+table td{
+    vertical-align:middle;
+}
+
+/* Action buttons inside table */
+table td button{
+    margin:2px 4px;
+    padding:6px 12px;
+    font-size:13px;
+}
+
+/* Form styling for check-in / check-out */
+.container form input,
+.container form select{
+    background:#fafafa;
+}
+
+/* Form submit spacing */
+.container form button{
+    margin-top:15px;
+}
+
+/* Responsive support */
+@media (max-width:768px){
+    .container{
+        width:95%;
+    }
+
+    table{
+        font-size:13px;
+    }
+
+    header{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    header nav{
+        margin-top:10px;
+    }
+}
+
+/* ================= ADMIN ADD USER ================= */
+
+.container h2{
+    text-align: center;
+    margin-bottom: 20px;
+    color: #1a1a2e;
+}
+
+/* Form layout */
+.container form{
+    max-width: 520px;
+    margin: auto;
+}
+
+/* Labels */
+.container form label{
+    font-weight: 600;
+    margin-top: 12px;
+    display: block;
+    color: #333;
+}
+
+/* Inputs & select */
+.container form input,
+.container form select{
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+/* Focus effect */
+.container form input:focus,
+.container form select:focus{
+    outline: none;
+    border-color: #1a1a2e;
+    box-shadow: 0 0 5px rgba(26,26,46,0.25);
+}
+
+/* Button row */
+.container form .btn-success{
+    margin-top: 20px;
+    padding: 10px 22px;
+    font-size: 15px;
+}
+
+/* Cancel button */
+.container form .btn-secondary{
+    margin-left: 10px;
+    padding: 10px 22px;
+    font-size: 15px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* Responsive */
+@media(max-width: 600px){
+    .container{
+        padding: 18px;
+    }
+}
